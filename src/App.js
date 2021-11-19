@@ -90,7 +90,7 @@ updateSearchBooks = (array)=>{
         {this.state.showSearchPage ? (
           <div className="search-books">
             <div className="search-books-bar">
-              <button className="close-search" onClick={() =>{ this.setState({ showSearchPage: false ,query:''})}}>Close</button>
+              <button className="close-search" onClick={() =>{ this.setState({ showSearchPage: false ,query:'',searchBooks:[]})}}>Close</button>
               <div className="search-books-input-wrapper">
                 {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -110,8 +110,8 @@ updateSearchBooks = (array)=>{
               </div>
             </div>
             {/* <SearchGrid books={this.state.searchBooks} query={this.state.query} updateHandler={this.updateHandler} updateSearchBooks={this.searchBookUpdateHandler}/> */}
-            <GridLoader query={this.state.query} update={(e)=>this.updateSearchBooks(e)}/>
-            <Grid books={this.state.searchBooks} updateHandler={this.shelfBookUpdateHandler}/>
+            <GridLoader shelfBooks={this.state.shelfBooks} query={this.state.query} update={(e)=>this.updateSearchBooks(e)}/>
+            <Grid shelfBooks={this.state.shelfBooks} books={this.state.searchBooks} updateHandler={this.shelfBookUpdateHandler}/>
           </div>
         ) : (
           <div className="list-books">
