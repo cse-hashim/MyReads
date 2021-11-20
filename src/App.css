@@ -196,3 +196,10 @@ button:active {
   text-align: center;
   font-size: 0.8em;
 }
+
+.rating-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
