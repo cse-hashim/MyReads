@@ -1,10 +1,12 @@
 {
   "name": "myreads",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://https://cse-hashim.github.io/MyReads",
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
     "form-serialize": "^0.7.2",
+    "gh-pages": "^3.2.3",
     "prop-types": "^15.7.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -14,6 +16,8 @@
     "sort-by": "^1.2.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
