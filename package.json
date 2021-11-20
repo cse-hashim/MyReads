@@ -2,7 +2,7 @@
   "name": "myreads",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://cse-hashim.github.io/MyReads",
+  "homepage": "https://myreads201121.netlify.app/",
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
     "firebase": "^9.5.0",
