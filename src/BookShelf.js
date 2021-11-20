@@ -1,9 +1,4 @@
 import React, { Component } from "react";
-import { Fragment } from "react";
-// import { Link } from 'react-router-dom'
-// import ImageInput from "./ImageInput";
-// import serializeForm from 'form-serialize'
-// import BooksApp from "./App";
 import Book from "./Book";
 function Grid(props) {
   return (
@@ -43,16 +38,14 @@ class BookShelf extends Component {
   render() {
     return (
       <div>
-      {
-        this.props.isShelf ? 
-          this.props.shelfNames.map((e)=>(
-            <Shelf key={e.shelf} books={this.props.books} updateHandler={this.props.updateHandler} shelf={e.shelf} bookshelf_title={e.bookshelf_title} />
-          ))
-          
-         : (
-          <Grid books={this.props.books} searchBooks={this.props.searchBooks} updateHandler={this.props.updateHandler} />
-        )
-      }
+        {
+          this.props.isShelf ?
+            this.props.shelfNames.map((e) => (
+              <Shelf key={e.shelf} books={this.props.books} updateHandler={this.props.updateHandler} shelf={e.shelf} bookshelf_title={e.bookshelf_title} />
+            )) : (
+              <Grid books={this.props.books} searchBooks={this.props.searchBooks} updateHandler={this.props.updateHandler} />
+            )
+        }
       </div>
     )
   }

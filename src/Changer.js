@@ -16,9 +16,9 @@ class Changer extends Component {
                     <option value="read">Read</option>
                     <option value="none">None</option>
                 </select>
-                <div>
+                {/* <div>
                     {this.props.book.shelf}
-                </div>
+                </div> */}
             </div>
 
         );
