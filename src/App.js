@@ -9,7 +9,6 @@ class BooksApp extends React.Component {
   componentDidMount() {
     BooksAPI.getAll().then(
       (e) => {
-        // console.log(e);
         this.setState({ shelfBooks: e });
       }
     );
@@ -77,7 +76,6 @@ class BooksApp extends React.Component {
                 </div>
               </div>
               <div className="open-search">
-                {/* <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button> */}
                 <Link className="link" onClick={() => { this.setState({ query: '', searchBooks: [] }); history.push('/') }} to={{ pathname: "/search" }} >Add a book</Link>
               </div>
             </div>
@@ -88,7 +86,6 @@ class BooksApp extends React.Component {
             <Fragment>
               <div className="search-books">
                 <div className="search-books-bar">
-                  {/* <button className="close-search" onClick={() => { this.setState({ showSearchPage: false, query: '', searchBooks: [] }) }}>Close</button> */}
                   <Link className="close-search" to={{ pathname: "/" }} onClick={() => { history.push('/search') }}>Close</Link>
                   <div className="search-books-input-wrapper">
                     <input
