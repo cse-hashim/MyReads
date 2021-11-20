@@ -13,16 +13,16 @@ class BooksApp extends React.Component {
     BooksAPI.getAll().then(
       (e) => {
         console.log(e);
-        this.setState({shelfBooks: e});
+        this.setState({ shelfBooks: e });
       }
     );
   }
-  searchBookUpdateHandler=(books)=>{
-    this.setState(curr=>({
+  searchBookUpdateHandler = (books) => {
+    this.setState(curr => ({
       searchBooks: books
     }));
   }
-  shelfBookUpdateHandler=(book)=>{
+  shelfBookUpdateHandler = (book) => {
     // new Promise((resolve)=>{resolve(1)})
     // .then(()=>{
     //   this.setState(curr=>({
@@ -36,17 +36,17 @@ class BooksApp extends React.Component {
     //   )}))
     // })
     // .then(()=>{
-      // BooksAPI.update(book,book.shelf);
+    // BooksAPI.update(book,book.shelf);
     // })
-    BooksAPI.update(book,book.shelf)
-    .then(()=>{
-      BooksAPI.getAll().then(
-        (e) => {
-          console.log(e);
-          this.setState({shelfBooks: e});
-        }
-      );
-    });
+    BooksAPI.update(book, book.shelf)
+      .then(() => {
+        BooksAPI.getAll().then(
+          (e) => {
+            console.log(e);
+            this.setState({ shelfBooks: e });
+          }
+        );
+      });
   }
 
   state = {
@@ -59,38 +59,41 @@ class BooksApp extends React.Component {
     showSearchPage: false,
     shelfBooks: [],
     searchBooks: [],
-    query:'',
+    query: '',
   }
-  updateHandler =(q)=> {
-    this.setState({query: q});
+  updateHandler = (q) => {
+    this.setState({ query: q });
 
   }
   updateQuery = (query) => {
-    new Promise((resolve)=>{resolve(1)}).then(()=>{this.setState(() => ({ query: query }));}).then(()=>{
+    new Promise((resolve) => { resolve(1) }).then(() => { this.setState(() => ({ query: query })); }).then(() => {
       BooksAPI.search(query).then(
         (e) => {
           console.log(e);
-          this.setState({searchBooks: e});
+          this.setState({ searchBooks: e });
         }
       );
     })
-    
-}
-clearQuery = () => {
+
+  }
+  clearQuery = () => {
     this.updateQuery('')
-}
-updateSearchBooks = (array)=>{
-  this.setState((curr)=>({
-    searchBooks: array
-  }));
-}
+  }
+  updateSearchBooks = (array) => {
+    this.setState((curr) => ({
+      searchBooks: array
+    }));
+  }
   render() {
+    const shelfNames = [{ shelf: "currentlyReading", bookshelf_title: "Currently Reading" },
+    { shelf: "wantToRead", bookshelf_title: "Want To Read" },
+    { shelf: "read", bookshelf_title: "Read" }]
     return (
       <div className="app">
         {this.state.showSearchPage ? (
           <div className="search-books">
             <div className="search-books-bar">
-              <button className="close-search" onClick={() =>{ this.setState({ showSearchPage: false ,query:'',searchBooks:[]})}}>Close</button>
+              <button className="close-search" onClick={() => { this.setState({ showSearchPage: false, query: '', searchBooks: [] }) }}>Close</button>
               <div className="search-books-input-wrapper">
                 {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -100,18 +103,18 @@ updateSearchBooks = (array)=>{
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   placeholder="Search by title or author"
                   value={this.state.query}
-                  onChange={e=>this.updateHandler(e.target.value)}
+                  onChange={e => this.updateHandler(e.target.value)}
                 />
 
               </div>
             </div>
             {/* <SearchGrid books={this.state.searchBooks} query={this.state.query} updateHandler={this.updateHandler} updateSearchBooks={this.searchBookUpdateHandler}/> */}
-            <GridLoader shelfBooks={this.state.shelfBooks} query={this.state.query} update={(e)=>this.updateSearchBooks(e)}/>
-            <Grid shelfBooks={this.state.shelfBooks} books={this.state.searchBooks} updateHandler={this.shelfBookUpdateHandler}/>
+            <GridLoader shelfBooks={this.state.shelfBooks} query={this.state.query} update={(e) => this.updateSearchBooks(e)} />
+            <BookShelf isShelf={false} books={this.state.shelfBooks} searchBooks={this.state.searchBooks} updateHandler={this.shelfBookUpdateHandler} />
           </div>
         ) : (
           <div className="list-books">
@@ -121,9 +124,9 @@ updateSearchBooks = (array)=>{
             <div className="list-books-content">
               <div>
                 {/* <ShelfOrganizer /> */}
-                <BookShelf books={this.state.shelfBooks} updateHandler={this.shelfBookUpdateHandler} shelf="currentlyReading" bookshelf_title="Currently Reading" />
-                <BookShelf books={this.state.shelfBooks} updateHandler={this.shelfBookUpdateHandler} shelf="wantToRead" bookshelf_title="Want To Read" />
-                <BookShelf books={this.state.shelfBooks} updateHandler={this.shelfBookUpdateHandler} shelf="read" bookshelf_title="Read" />
+                <BookShelf shelfNames={shelfNames} isShelf={true} books={this.state.shelfBooks} updateHandler={this.shelfBookUpdateHandler}/>
+                {/* <BookShelf isShelf={true} books={this.state.shelfBooks} updateHandler={this.shelfBookUpdateHandler} shelf="wantToRead" bookshelf_title="Want To Read" />
+                <BookShelf isShelf={true} books={this.state.shelfBooks} updateHandler={this.shelfBookUpdateHandler} shelf="read" bookshelf_title="Read" /> */}
               </div>
             </div>
             <div className="open-search">
