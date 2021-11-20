@@ -81,6 +81,8 @@ npm start
  - shelf of the book is modified in the main and in the search pages.
  - error handling is used withing the project
  - When an item is categorized on the search page, the modification is shown withing the search page on the dropdown menu to indicate the current shelf of the book
+ - 404-NOT-FOUND handling
+ 
  
 ---
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Book from "./Book";
 function Grid(props) {
   return (
@@ -34,21 +34,19 @@ function Shelf(props) {
     </div>
   );
 }
-class BookShelf extends Component {
-  render() {
-    return (
-      <div>
-        {
-          this.props.isShelf ?
-            this.props.shelfNames.map((e) => (
-              <Shelf key={e.shelf} books={this.props.books} updateHandler={this.props.updateHandler} shelf={e.shelf} bookshelf_title={e.bookshelf_title} />
-            )) : (
-              <Grid books={this.props.books} searchBooks={this.props.searchBooks} updateHandler={this.props.updateHandler} />
-            )
-        }
-      </div>
-    )
-  }
+const BookShelf = (props) => {
+  return (
+    <div>
+      {
+        props.isShelf ?
+          props.shelfNames.map((e) => (
+            <Shelf key={e.shelf} books={props.books} updateHandler={props.updateHandler} shelf={e.shelf} bookshelf_title={e.bookshelf_title} />
+          )) : (
+            <Grid books={props.books} searchBooks={props.searchBooks} updateHandler={props.updateHandler} />
+          )
+      }
+    </div>
+  )
 }
 
 export default BookShelf;

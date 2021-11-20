@@ -1,9 +1,16 @@
 import React, { Fragment } from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import BookShelf from './BookShelf'
 import GridLoader from './GirdLoader'
+const NotFound = () => (
+  <div className="list-books-title rating-container red">
+    <Link className='link close-search' to="/">Go Home</Link>
+    <h1>404 - Not Found!</h1>
+  </div>
+);
+
 class BooksApp extends React.Component {
 
   componentDidMount() {
@@ -64,6 +71,7 @@ class BooksApp extends React.Component {
     { shelf: "read", bookshelf_title: "Read" }]
     return (
       <div className="app">
+        <Switch>
         <Route exact path="/"
           render={({ history }) => (
             <div className="list-books">
@@ -102,6 +110,9 @@ class BooksApp extends React.Component {
             </Fragment>
           )}
         />
+      <Route component={NotFound} />
+
+        </Switch>
       </div>
     )
   }
