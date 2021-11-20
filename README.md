@@ -88,3 +88,7 @@ npm start
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+---
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e476d009-9f59-415f-b2bf-929decfd0744/deploy-status)](https://app.netlify.com/sites/myreads201121/deploys)
