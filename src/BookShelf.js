@@ -46,7 +46,7 @@ class BookShelf extends Component {
       {
         this.props.isShelf ? 
           this.props.shelfNames.map((e)=>(
-            <Shelf books={this.props.books} updateHandler={this.props.updateHandler} shelf={e.shelf} bookshelf_title={e.bookshelf_title} />
+            <Shelf key={e.shelf} books={this.props.books} updateHandler={this.props.updateHandler} shelf={e.shelf} bookshelf_title={e.bookshelf_title} />
           ))
           
          : (
