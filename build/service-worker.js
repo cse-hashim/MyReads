@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "//cse-hashim.github.io/MyReads/precache-manifest.d4553d7e9c2cc4fb31777d5a98b59888.js"
+  "//cse-hashim.github.io/MyReads/precache-manifest.cca10cab064487598920e6e584538664.js"
 );
 
 workbox.clientsClaim();
